@@ -56,7 +56,7 @@ function checkCount(localCount) {
     //result.textContent += "  Game no " + count;
     if (count == 10) {
 
-        mainSection.remove();
+        //mainSection.remove();
         result.textContent = "Final score " + yourScore.textContent + " : " + computerScore.textContent;
         if (+(yourScore.textContent) == +(computerScore.textContent)) {
             finalResult.textContent = "THE TOURNAMENT IS DRAW";
@@ -73,6 +73,8 @@ function checkCount(localCount) {
         const body = document.querySelector("body");
         body.appendChild(button);
         button.classList.add("playAgain");
+         computerButtons.forEach((item) => item.disabled = true);
+        yourButtons.forEach((item) => item.disabled = true);
         button.addEventListener("click", function () {
             yourScore.textContent = 0;
             computerScore.textContent = 0;
@@ -82,8 +84,10 @@ function checkCount(localCount) {
             result.textContent = "";
             finalResult.textContent = "";
             button.remove();
-            body.insertBefore(mainSection, result);
+           // body.insertBefore(mainSection, result);
             count = 0;
+            computerButtons.forEach((item) => item.disabled = false);
+            yourButtons.forEach((item) => item.disabled = false);
         })
 
 
